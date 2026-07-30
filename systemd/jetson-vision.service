@@ -1,0 +1,18 @@
+[Unit]
+Description=Jetson Nano OpenCV Vision v2
+After=network-online.target nvargus-daemon.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__USER__
+Group=__USER__
+WorkingDirectory=__PROJECT_DIR__
+Environment=PYTHONUNBUFFERED=1
+ExecStart=__PROJECT_DIR__/jetson-nano-opencv-env/bin/python3 __PROJECT_DIR__/main.py
+Restart=always
+RestartSec=5
+TimeoutStopSec=15
+
+[Install]
+WantedBy=multi-user.target
